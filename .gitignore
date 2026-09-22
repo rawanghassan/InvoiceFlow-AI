@@ -1,0 +1,38 @@
+# Secrets and local configuration
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+credentials.*
+
+# Private implementation
+*.ipynb
+*.pkl
+*.pbix
+*.xlsx
+*.xls
+*.csv
+*.json.bak
+
+# n8n / workflow exports
+*n8n*.json
+*workflow*.json
+
+# Private invoice files
+invoice_*.pdf
+invoices/
+data/
+private/
+backups/
+
+# Python / system files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+
+# Local Streamlit config
+.streamlit/secrets.toml
