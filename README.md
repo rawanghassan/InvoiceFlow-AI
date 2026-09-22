@@ -1,145 +1,128 @@
+<div align="center">
+
 # InvoiceFlow AI
 
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
-![n8n](https://img.shields.io/badge/n8n-Cloud-EA4B71?logo=n8n&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-Operational_UI-FF4B4B?logo=streamlit&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power_BI-Reporting-F2C811?logo=powerbi&logoColor=111111)
+### Intelligent Invoice Automation & Financial Operations Workflow
 
-> **Public portfolio repository — implementation intentionally withheld.**
+**From PDF invoices to validated, review-ready business data.**
 
-InvoiceFlow AI is an automated invoice-processing and financial-operations MVP that turns PDF invoices into structured, validated, review-ready records and operational dashboards.
+<br>
 
-**Key capabilities:** Invoice parsing · Validation · Duplicate detection · Overdue monitoring · Supplier anomaly detection · Telegram alerts · Dashboard API
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![n8n](https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Telegram](https://img.shields.io/badge/Telegram-2AABEE?style=for-the-badge&logo=telegram&logoColor=white)
 
-![InvoiceFlow AI concept](assets/invoiceflow_hero_concept.png)
+<br>
+
+**Automation · Validation · Duplicate Detection · Anomaly Monitoring · Alerts · Dashboards**
+
+</div>
+
+---
+
+> **Public portfolio repository — implementation intentionally withheld.**  
+> This repository presents the architecture, product design, workflow logic, validation strategy, testing approach, and project documentation without exposing the proprietary production implementation.
+
+---
+
+## Overview
+
+**InvoiceFlow AI** is an automated invoice-processing and financial-operations MVP designed to transform PDF invoices into structured, validated, and actionable business records.
+
+Instead of manually reviewing every invoice, the workflow coordinates invoice extraction, financial validation, duplicate detection, overdue monitoring, supplier anomaly checks, review alerts, ledger updates, and operational reporting.
+
+The project demonstrates how **Python, workflow automation, data validation, business intelligence, and API-based integrations** can be combined into one connected operational system.
+
+---
+
+## Product Concept
+
+![InvoiceFlow AI](assets/invoiceflow_hero_concept.png)
 
 > *Conceptual product visualization for presentation purposes. It is not a literal application screenshot.*
 
-## What the project does
+InvoiceFlow AI was designed around one core idea:
 
-InvoiceFlow AI automates the path from invoice upload to operational review. The system extracts structured invoice fields, validates financial and date rules, checks overdue status and duplicate risk, evaluates supplier-level anomalies, stores approved records in a master ledger, sends review alerts, and exposes dashboard data through a dedicated API.
+### Turn invoice processing from a manual task into an automated decision workflow.
 
-### Core capabilities
+The system moves invoices through a structured operational pipeline:
 
-- PDF invoice ingestion and field extraction
-- Required-field and invoice-number validation
-- Arithmetic checks: `Subtotal + VAT ≈ Total`
-- Currency-aware VAT validation
-- Due-date and overdue checks
-- Duplicate detection using invoice number + supplier
-- Supplier amount anomaly detection
-- Supplier category-shift detection
-- Master Ledger storage
-- Telegram review alerts
-- Streamlit operational interface
-- Dashboard API backed by the Master Ledger
-- Light and dark UI modes
+**PDF → Extraction → Validation → Risk Checks → Review Decision → Ledger → Dashboard**
 
-## How it works
+---
 
-![InvoiceFlow AI workflow concept](assets/invoiceflow_workflow_concept.png)
+## Key Capabilities
+
+| Capability | What It Does |
+|---|---|
+| **PDF Invoice Processing** | Accepts invoice PDFs and extracts structured invoice information |
+| **Invoice Field Parsing** | Identifies invoice number, supplier, dates, totals, VAT, currency, category, and payment status |
+| **Financial Validation** | Checks required fields, arithmetic consistency, VAT rules, dates, and financial values |
+| **Duplicate Detection** | Identifies invoices already processed using invoice and supplier matching |
+| **Overdue Monitoring** | Detects open invoices that have passed their due date |
+| **Supplier Anomaly Detection** | Flags unusual supplier amounts and unexpected category changes |
+| **Automated Review Routing** | Determines whether an invoice requires human review |
+| **Telegram Alerts** | Sends review and duplicate notifications automatically |
+| **Ledger Integration** | Stores validated records in the operational Master Ledger |
+| **Dashboard API** | Exposes ledger data for live dashboard reporting |
+| **Business Intelligence** | Supports financial monitoring and operational analysis through dashboards |
+
+---
+
+## System Architecture
+
+![InvoiceFlow AI Workflow](assets/invoiceflow_workflow_concept.png)
 
 > *Conceptual workflow visualization. The private production workflow contains the implementation details and node logic.*
 
-At a high level, the processing path is:
+### High-Level Processing Flow
 
 ```text
 PDF Invoice
     │
     ▼
-Streamlit UI
+Invoice Upload
     │
     ▼
-n8n Webhook
+Extract PDF Text
     │
-    ├─ Extract PDF text
-    ├─ Parse invoice fields
-    ├─ Validate invoice
-    ├─ Check overdue status
-    ├─ Detect duplicates
-    ├─ Analyze supplier history
-    ├─ Route review alerts
-    └─ Insert approved/new invoice into Master Ledger
-                 │
-                 ├──────────────► Telegram Alerts
-                 │
-                 └──────────────► Dashboard Data API
-                                      │
-                                      ▼
-                                 Streamlit Dashboard
-```
-
-## Validation and review experience
-
-The operational result view brings invoice metadata, validation outcomes, overdue status, duplicate detection, anomaly flags, review state, and ledger action into one interface.
-
-![InvoiceFlow AI analysis concept](assets/invoiceflow_analysis_concept.png)
-
-> *Conceptual product visualization for presentation purposes. Values and UI details are illustrative.*
-
-## Dashboard and insights
-
-The dashboard reads from the complete Master Ledger through a dedicated n8n API rather than relying on browser-local history. Currency filters are handled separately so AED, SAR, and USD totals are not mixed.
-
-![InvoiceFlow AI dashboard concept](assets/invoiceflow_dashboard_concept.png)
-
-> *Conceptual product visualization for presentation purposes. It illustrates the intended analytics experience rather than exposing production data.*
-
-## Technology stack
-
-| Layer | Technology |
-|---|---|
-| Data processing | Python |
-| Notebook development | Jupyter Notebook |
-| Workflow automation | n8n Cloud |
-| Operational UI | Streamlit |
-| Workflow storage | n8n Data Tables |
-| Alerts | Telegram |
-| BI / reporting | Power BI |
-| Data exchange | JSON / CSV / Excel / PDF |
-
-## Validation and workflow testing
-
-The workflow was tested across three main production branches:
-
-1. **Clean invoice** → processed and added to the ledger.
-2. **Review-required invoice** → validation/overdue reason preserved, alert sent, record added for review.
-3. **Duplicate invoice** → duplicate detected, alert sent, insertion blocked.
-
-The Dashboard Data API was also tested end-to-end against the Master Ledger.
-
-## Repository scope
-
-This repository is intentionally a **portfolio-safe public release**. It demonstrates the architecture, product design, interface concept, validation strategy, and test outcomes without publishing the proprietary implementation.
-
-The following are intentionally **not included**:
-
-- Full Python/Jupyter processing pipeline
-- Production Streamlit source code
-- n8n workflow export / node code
-- Parsing and anomaly-detection implementation
-- Power BI `.pbix` file and DAX implementation
-- Training or benchmark datasets
-- Generated invoice corpus
-- Production webhook URLs
-- Telegram identifiers or credentials
-- Master Ledger data or execution history
-
-See [Public Repository Scope](docs/PUBLIC_REPOSITORY_SCOPE.md) for details.
-
-## Project overview
-
-A concise illustrated project overview is available here:
-
-[InvoiceFlow AI — Project Overview (PDF)](docs/InvoiceFlow_AI_Project_Overview_EN.pdf)
-
-## Status
-
-**Production-ready MVP / portfolio release.**  
-The public repository is documentation-focused; the private implementation remains with the project owner.
-
-## Usage and intellectual property
-
-This repository is provided for **portfolio review and demonstration only**. No permission is granted to copy, reproduce, redistribute, reverse engineer, commercialize, or create derivative implementations from the proprietary project materials.
-
-See [LICENSE](LICENSE) for the repository terms.
+    ▼
+Parse Invoice Fields
+    │
+    ▼
+Validate Invoice
+    │
+    ▼
+Check Overdue Status
+    │
+    ├───────────────► Duplicate Check
+    │                     │
+    │                     ├── Duplicate → Alert + Block Ledger Insert
+    │                     │
+    │                     └── New Invoice
+    │
+    ▼
+Get Supplier History
+    │
+    ▼
+Detect Supplier Anomalies
+    │
+    ▼
+Needs Review?
+   / \
+ Yes  No
+  │    │
+  ▼    │
+Review │
+Alert  │
+  \    /
+   ▼  ▼
+Insert into Master Ledger
+        │
+        ▼
+Dashboard Data API
+        │
+        ▼
+Operational Dashboard
