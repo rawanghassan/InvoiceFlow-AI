@@ -1,8 +1,15 @@
 # InvoiceFlow AI
 
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![n8n](https://img.shields.io/badge/n8n-Cloud-EA4B71?logo=n8n&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Operational_UI-FF4B4B?logo=streamlit&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power_BI-Reporting-F2C811?logo=powerbi&logoColor=111111)
+
 > **Public portfolio repository — implementation intentionally withheld.**
 
 InvoiceFlow AI is an automated invoice-processing and financial-operations MVP that turns PDF invoices into structured, validated, review-ready records and operational dashboards.
+
+**Key capabilities:** Invoice parsing · Validation · Duplicate detection · Overdue monitoring · Supplier anomaly detection · Telegram alerts · Dashboard API
 
 ![InvoiceFlow AI concept](assets/invoiceflow_hero_concept.png)
 
