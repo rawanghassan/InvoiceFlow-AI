@@ -1,0 +1,22 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "title": "Invoice processed with review required",
+  "invoice_number": "INV-2026-0001",
+  "invoice_date": "2026-08-12",
+  "supplier_name": "Demo Supplier",
+  "expense_category": "Software",
+  "currency": "AED",
+  "subtotal": 1000.00,
+  "vat_amount": 50.00,
+  "total_amount": 1050.00,
+  "payment_status": "Unpaid",
+  "due_date": "2026-08-07",
+  "validation_issue_count": 1,
+  "due_date_before_invoice_date": true,
+  "is_overdue": true,
+  "days_overdue": 43,
+  "duplicate": false,
+  "review_required": true,
+  "review_reason": "Due date is before invoice date | Invoice is overdue",
+  "ledger_added": true
+}
